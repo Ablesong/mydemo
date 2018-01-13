@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=s, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dollar from center demo</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            perspective: 800px;
+              
+        }
+        body{
+            width: 100vw;
+            height: 100vh;
+            background: pink;
+        }
+        .class-a{
+            width:100vw;
+            height: 100vh;
+            background: #159fb8;
+        }
+        .firstpage{
+            width:100vw;
+            height: 100vh;
+            background: #159fb8;
+            transform-origin: 50% 100%;
+            animation: OpenTop 0.5s forwards ease-in;
+        }
+        @keyframes OpenTop {
+            50%{
+            transform: rotateX(30deg);
+            animation-timing-function: ease-out;
+            }
+        }
+        .dollar{
+            width: 1000px;
+            height: 800px;
+            position: absolute;
+            top: 20%;
+            left: 30%;
+            animation: slideDown 0.5s forwards ease-in-out;
+        }
+        @keyframes slideDown {
+            0% {
+                transform: translate3d(0,-100%,0);
+                opacity: 0;
+            }
+            100% {
+                transform: translate3d(0,15%,0);
+                opacity: 1;
+            }
+        }
+        button{
+            width: 80px;
+            height: 40px;
+            background: #2a4daf;
+            color: aliceblue;
+            position: absolute;
+            top: 50%;
+            left: 5%;
+        }
+    </style>
+</head>
+<body>
+    <div class="all">
+        <div v-bind:class="{ 'class-a': isA, 'firstpage': isB }"></div>
+        <img  v-show="show" class="dollar" src="dollar.png" alt="dollarPic" srcset="">
+        <button @click="openDollar" type="submit">掉钱啦</button>
+    </div>
+
+    <script src="http://www.songyifei.vip/vue.js"></script>
+    <script>
+        var all = new Vue({
+            el:'.all',
+            data:{
+                show:false,
+                isA:true,
+                isB:false
+            },
+            methods: {
+                openDollar:function(){
+                    this.show = !this.show;
+                    this.isA = !this.isA;
+                    this.isB = !this.isB;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
